@@ -1,0 +1,52 @@
+:root { --sig: #00786B; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --sig: #34BFAC; } }
+
+.hint { font-size: var(--fs-small); color: var(--ink-faint); line-height: 1.45; margin: 9px 0 0; }
+.checks label { display: block; font-size: var(--fs-small); color: var(--ink-soft); cursor: pointer; }
+.checks input { accent-color: var(--sig); margin-right: 6px; }
+
+dl.stats { margin: 12px 0 0; font-size: var(--fs-small); }
+dl.stats div { display: flex; justify-content: space-between; padding: 3px 0; border-bottom: 1px solid var(--rule-fine); }
+dl.stats dt { color: var(--ink-soft); margin: 0; }
+dl.stats dd { margin: 0; font-family: "IBM Plex Mono", monospace; font-variant-numeric: tabular-nums; }
+dl.stats dd.hot { color: var(--warn); font-weight: 600; }
+
+.storm-note {
+  border-left: 2px solid var(--warn);
+  padding: 7px 0 7px 11px;
+  margin: 12px 0 0;
+  font-size: var(--fs-small);
+  color: var(--ink-soft);
+}
+.storm-note b { color: var(--ink); }
+
+.storm-list { display: flex; flex-direction: column; gap: 1px; max-height: 230px; overflow-y: auto; }
+.storm-list button {
+  text-align: left; border: 0; border-bottom: 1px solid var(--rule-fine);
+  background: transparent; padding: 5px 2px; font-size: var(--fs-small);
+  display: flex; justify-content: space-between; gap: 8px; border-radius: 0;
+}
+.storm-list button:hover { background: var(--sig-wash); color: var(--sig); }
+.storm-list .d { font-family: "IBM Plex Mono", monospace; }
+.storm-list .dst { color: var(--warn); font-family: "IBM Plex Mono", monospace; }
+
+.stage { display: flex; flex-direction: column; min-height: 0; }
+.mapwrap { flex: 1; min-height: 0; position: relative; }
+#map { width: 100%; height: 100%; display: block; }
+.tlwrap { border-top: 1px solid var(--rule); background: var(--plate); }
+#tl { width: 100%; height: 150px; display: block; cursor: crosshair; }
+
+.land { fill: var(--plate-sunk); stroke: var(--rule); stroke-width: 0.5; }
+.graticule { stroke: var(--rule-fine); stroke-width: 0.5; fill: none; }
+.edge { stroke: var(--sig); fill: none; }
+.stn circle { fill: var(--sig); stroke: var(--plate); stroke-width: 1.2; }
+.stn.off circle { fill: var(--ink-faint); opacity: 0.45; }
+.stn text {
+  font-family: "IBM Plex Mono", monospace; font-size: 9px;
+  fill: var(--ink-soft); pointer-events: none;
+}
+
+@media (max-width: 880px) {
+  .mapwrap { height: 46vh; }
+  #tl, .tlwrap { height: 120px; }
+}

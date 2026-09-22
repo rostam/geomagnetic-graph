@@ -1,0 +1,3 @@
+data/hourly/
+*.pyc
+__pycache__/

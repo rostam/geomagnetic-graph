@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Geomagnetic Network</title>
+<meta name="description" content="Twenty magnetic observatories as a correlation graph, one day at a time, 2010-2022.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><circle cx='3' cy='5' r='1.8' fill='%2300786B'/><circle cx='13' cy='4' r='1.8' fill='%2300786B'/><circle cx='8' cy='12' r='1.8' fill='%2300786B'/><path d='M3 5 13 4 8 12Z' fill='none' stroke='%2300786B' stroke-width='1.2'/></svg>">
+<link rel="stylesheet" href="css/plate.css">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<div class="shell">
+  <header class="masthead">
+    <h1><span class="mark">◈</span> Geomagnetic Network</h1>
+    <p class="tagline">Twenty observatories as one graph, rewired every day for thirteen years</p>
+    <a href="https://github.com/rostam/geomagnetic-graph">Source and method</a>
+  </header>
+
+  <aside class="rail">
+    <div class="group">
+      <h2>The day</h2>
+      <div class="field">
+        <input type="date" id="date" min="2010-01-01" max="2022-12-31">
+      </div>
+      <div class="field">
+        <button id="play">Play the year</button>
+      </div>
+      <dl class="stats" id="dayStats"></dl>
+      <div id="stormNote"></div>
+    </div>
+
+    <div class="group">
+      <h2>When are two stations linked</h2>
+      <div class="field">
+        <label for="thr">Correlation at least <b id="thrVal" class="num">0.60</b></label>
+        <input type="range" id="thr" min="0.1" max="0.95" step="0.05" value="0.6">
+      </div>
+      <p class="hint">An edge means the two observatories' disturbance fields moved together
+      over the 24 hours of this window. Raise the bar and the quiet days fall apart first.</p>
+    </div>
+
+    <div class="group">
+      <h2>The timeline shows</h2>
+      <div class="field">
+        <select id="metric">
+          <option value="mean_r">Mean correlation across all pairs</option>
+          <option value="density">Edge density</option>
+          <option value="modularity">Modularity — how split the network is</option>
+          <option value="alg_conn">Algebraic connectivity</option>
+          <option value="amplitude">Largest field swing (nT)</option>
+        </select>
+      </div>
+      <div class="field checks">
+        <label><input type="checkbox" id="showStorms" checked> Mark catalogued storms</label>
+      </div>
+    </div>
+
+    <div class="group">
+      <h2>Jump to a storm</h2>
+      <div id="stormList" class="storm-list"></div>
+    </div>
+  </aside>
+
+  <main class="stage">
+    <div class="mapwrap plate-grid"><svg id="map" role="img" aria-label="observatory network"></svg></div>
+    <div class="tlwrap">
+      <canvas id="tl" height="150"></canvas>
+    </div>
+    <div class="readout" id="readout"></div>
+  </main>
+</div>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
