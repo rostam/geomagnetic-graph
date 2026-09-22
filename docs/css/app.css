@@ -50,3 +50,5 @@ dl.stats dd.hot { color: var(--warn); font-weight: 600; }
   .mapwrap { height: 46vh; }
   #tl, .tlwrap { height: 120px; }
 }
+
+#tl:focus-visible { outline: 2px solid var(--sig); outline-offset: -2px; }

@@ -275,18 +275,6 @@ table.plate-table {
   margin: 0 0 8px;
 }
 
-.bar {
-  height: 3px;
-  background: var(--plate-sunk);
-  overflow: hidden;
-}
-.bar > i {
-  display: block;
-  height: 100%;
-  background: var(--sig);
-  width: 0;
-  transition: width 0.12s linear;
-}
 
 /* --- responsive ----------------------------------------------------------- */
 

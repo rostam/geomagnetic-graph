@@ -238,6 +238,12 @@ function drawTimeline() {
     }
   }
 
+  const w0 = ws[state.i];
+  cv.setAttribute('aria-label',
+    `Timeline of ${METRIC_LABEL[state.metric]}, 2010 to 2022. Showing ${w0.t}: `
+    + `${(vals[state.i]).toFixed(3)}${w0.storm ? ', a catalogued storm' : ''}. `
+    + `Use the left and right arrow keys to step one day.`);
+
   const x = X(state.i);
   ctx.strokeStyle = cWarn; ctx.lineWidth = 1.2;
   ctx.beginPath(); ctx.moveTo(x, 4); ctx.lineTo(x, H - pad); ctx.stroke();
